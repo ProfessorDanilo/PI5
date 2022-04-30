@@ -9,7 +9,7 @@ No terminal, digite:
 
   $ git clone https://github.com/univesp-projetointegrador1/website_PI2.git
 
-  (digite seu login e senha do GitHub)
+  (digite suas credenciais)
 
   $ cd ~/git/website
   ```
@@ -17,9 +17,9 @@ No terminal, digite:
 ### Para criar um ambiente virtual:
   ```bash 
   
-  virtualenv env
-
-  source env/bin/activate
+  sudo python3 -m venv ~/git/website_PI2/venv
+  
+  source ~/git/website_PI2/venv/bin/activate
   ```
 
 ### Para instalar pacotes necessários:
