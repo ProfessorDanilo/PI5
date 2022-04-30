@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Nível 4 {% endblock %}</h1>
+<p>Continue respondendo se a afirmação é  Verdadeira ou Falsa.</p>
+<br>
+<h1>Afirmação 17:</h1>
+<p>Borboletas voam</p>
+<h1><pre>       OU</pre></h1>
+<p>peixes vivem na água.</p>
+<table>
+<tr><td>
+        <form method="post">
+        <div class="hidden">
+            <label for="title">Title</label> 
+            <input type="text" name="resposta" placeholder="Post title" class="form-control" value="V" ></input>
+        </div>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">Verdadeiro</button>
+        </div>
+        </form>
+    </td>
+<td>
+    <form method="post">
+        <div class="hidden">
+            <label for="title">Title</label> 
+            <input type="text" name="resposta" placeholder="Post title" class="form-control" value="F"></input>
+        </div>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">Falso</button>
+        </div>
+    </form>
+</td>
+</table>
+<p>Pontuação total atual: {{pontuacao}} </p>
+
+{% endblock %}

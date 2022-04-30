@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Nível 2 {% endblock %}</h1>
+<p>Você está no nível 2. Sua pontuação até agora foi de {{pontuacao}} de um total de 50 pontos possíveis.</p>
+<p>Vamos aprender a negação: se uma frase for verdadeira, quando colocamos um NÃO ela se torna falsa e quando uma frase era falsa, quando colocamos um NÃO ela se torna verdadeira.</p>
+<p>Como exemplo, a frase "Dinossauros morreram" é uma afirmação verdadeira, mas a frase "Dinossauros NÃO morreram" é uma afirmação falsa.</p>
+<p>Vamos à próxima afirmação.</p>
+<br>
+<h1>Afirmação 6:</h1>
+<p>Cachorros não tem asas.</p>
+<table>
+<tr><td>
+        <form method="post">
+        <div class="hidden">
+            <label for="title">Title</label> 
+            <input type="text" name="resposta" placeholder="Post title" class="form-control" value="V" ></input>
+        </div>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">Verdadeiro</button>
+        </div>
+        </form>
+    </td>
+<td>
+    <form method="post">
+        <div class="hidden">
+            <label for="title">Title</label> 
+            <input type="text" name="resposta" placeholder="Post title" class="form-control" value="F"></input>
+        </div>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">Falso</button>
+        </div>
+    </form>
+</td>
+</table>
+<p>Pontuação total atual: {{pontuacao}} </p>
+
+{% endblock %}

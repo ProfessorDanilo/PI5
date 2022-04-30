@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} RESPOSTA CORRETA {% endblock %}</h1>
+<form method="post">
+    <div class="hidden">
+        <label for="title">Title</label> 
+        <input type="text" name="resposta" placeholder="Post title" class="form-control" value="proximo"> </input>
+    </div>
+    <div class="form-group">
+        <button type="number" class="btn btn-primary">Próxima</button>
+    </div>
+</form>
+
+{% endblock %}

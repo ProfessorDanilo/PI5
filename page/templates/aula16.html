@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Nível 4 {% endblock %}</h1>
+<p>Você está no nível 4. Sua pontuação até agora foi de {{pontuacao}} de um total de 150 pontos possíveis.</p>
+<p>Vamos aprender o conectivo OU: pelo menos uma dentre duas afirmações precisa ser verdadeira, mas ambas podem ser verdadeiras.</p>
+<p>Como exemplo, as afirmações "Dinossauros não foram extintos" OU "Borboletas borboletas voam" possui uma afirmação correta, portanto a afirmação "Dinossauros não foram extintos OU borboletas voam" é verdadeira.</p>
+<p>Vamos à próxima afirmação.</p>
+<br>
+<h1>Afirmação 16:</h1>
+<p>Dinossauros foram extintos</p>
+<h1><pre>       OU</pre></h1>
+<p>cachorros tem asas.</p>
+<table>
+<tr><td>
+        <form method="post">
+        <div class="hidden">
+            <label for="title">Title</label> 
+            <input type="text" name="resposta" placeholder="Post title" class="form-control" value="V" ></input>
+        </div>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">Verdadeiro</button>
+        </div>
+        </form>
+    </td>
+<td>
+    <form method="post">
+        <div class="hidden">
+            <label for="title">Title</label> 
+            <input type="text" name="resposta" placeholder="Post title" class="form-control" value="F"></input>
+        </div>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">Falso</button>
+        </div>
+    </form>
+</td>
+</table>
+<p>Pontuação total atual: {{pontuacao}} </p>
+
+{% endblock %}
