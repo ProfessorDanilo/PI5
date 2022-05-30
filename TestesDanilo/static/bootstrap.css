@@ -71,6 +71,22 @@
   }
 }
 
+/*minhas mods*/
+esconde{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
