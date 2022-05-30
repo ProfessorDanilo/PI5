@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>{% block title %} Bem vindo {% endblock %}</h1>
-<p>Para começarmos, escolha um apelido.</p>
+<p>Para começarmos, escolha um apelido. Não use nome próprio e divirta-se.</p>
 <form method="post">
-    <label for="title">Title</label> 
-    <input type="text" name="nick" placeholder="Escolha um apelido" class="form-control" value=""></input>
+    <label for="title">Escolha um apelido</label> 
+    <input type="text" name="nick" placeholder="Escreva seu apelido para continuar" class="form-control" value="" name="apelido" required></input>
     <div class="form-group">
         <button type="number" class="btn btn-primary">Enviar</button>
     </div>
+    <p>{{preencha}}</p>
 </form>
 
 {% endblock %}

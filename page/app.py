@@ -1,9 +1,11 @@
+from pickle import FALSE
 from flask import Flask, render_template, request, url_for, flash, redirect
 import os, datetime
 import sqlite3
 from time import sleep
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import abort
+
 
 
 pontos=0
@@ -23,10 +25,10 @@ class Posts(db.Model):
    title = db.Column(db.String(80), nullable=False)
    content = db.Column(db.String(200), nullable=False)
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    posts = Posts.query.all()
-    return render_template('index.html', posts=posts)
+    return render_template('index.html')
 
 @app.route('/index.html')
 def index2():
@@ -513,3 +515,4 @@ def aula21():
             return render_template('index.html')
     return render_template('aula21.html', pontuacao=pontos, resultado=pontos*100/200, nome=apelido)
 
+#app.run(debug=True)
