@@ -76,32 +76,6 @@ def post(post_id):
     return render_template('post.html', post=post)
 
 
-@app.route('/<int:id>/edit', methods=('GET', 'POST'))
-def edit(id):
-    post = get_post(id)
-
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-
-        if not title:
-            flash('Título é obrigatório!')
-        else:
-            post.title = title
-            post.content = content
-            db.session.commit()
-            return redirect(url_for('index'))
-
-    return render_template('edit.html', post=post)
-
-@app.route('/<int:id>/delete', methods=('POST',))
-def delete(id):
-    post = get_post(id)
-    db.session.delete(post)
-    db.session.commit()
-    flash('"{}" foi apagado com sucesso!'.format(post.title))
-    return redirect(url_for('index'))
-
 
 ##################################
 #apresentação do jogo #
@@ -254,7 +228,7 @@ def aula8():
             pontos=pontos+10
             return render_template('correto.html')
 
-        if title == "F":
+        if title == "V":
             return render_template('errado.html')
 
         elif title == "proximo":
