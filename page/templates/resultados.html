@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} RANKING {% endblock %}</h1>
+<br>
+    <table class="table table-striped table-responsive table-borderless">
+        <thead class="thead-default">
+            <tr>
+                <th>Posição </th>
+                <th>Nome</th>
+                <th>Data do jogo </th>
+                <th>Pontuação </th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for row in rows %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ row[2] }} </td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[3] }}</td>
+                </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+<br>
+
+<form method="post">
+    <div class="hidden">
+        <label for="title">Title</label> 
+        <input type="text" name="resposta" placeholder="Post title" class="form-control" value="Fim"></input>
+    </div>
+    <div class="form-group">
+        <button type="number" class="btn btn-primary">Finalizar o jogo!</button>
+    </div>
+</form>
+<p>Pontuação total atual: {{pontuacao}} </p>
+
+{% endblock %}

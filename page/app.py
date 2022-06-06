@@ -9,7 +9,8 @@ from werkzeug.exceptions import abort
 
 
 def salvando(nome, pontuacao):
-
+    if nome == '':
+        return None
     connection = sqlite3.connect('meusTestesDanilo.db')
 
     with open('meusTestesDanilo.sql') as f:
@@ -23,6 +24,16 @@ def salvando(nome, pontuacao):
     connection.close()
 
 
+def ranking():    
+    connection = sqlite3.connect('meusTestesDanilo.db')
+    with open('meusTestesDanilo.sql') as f:
+        connection.executescript(f.read())
+    cur = connection.cursor()
+    cur.execute("SELECT * FROM ranking ORDER BY pontuacao DESC;")
+    rows = cur.fetchall()
+    connection.commit()
+    connection.close()
+    return rows
 
 
 
@@ -461,11 +472,11 @@ def aula20():
     if request.method == 'POST':
         title = request.form['resposta']
 
-        if title == "F":
+        if title == "V":
             pontos=pontos+10
             return render_template('correto.html')
 
-        if title == "V":
+        if title == "F":
             return render_template('errado.html')
 
         elif title == "proximo":
@@ -478,19 +489,25 @@ def aula20():
 @app.route('/aula21', methods=('GET', 'POST'))
 def aula21():
     global pontos
-    global apelido
-    salvando(apelido, pontos)
+    global apelido    
     if request.method == 'POST':
         title = request.form['resposta']
-
-        if title == "Fim":
-            return render_template('index.html')
-
+        if title == "Ranking":
+            salvando(apelido, pontos)
+            return redirect(url_for('resultados'))
         else:
-            return render_template('index.html')
+            return redirect(url_for('resultados'))   
     return render_template('aula21.html', pontuacao=pontos, resultado=pontos*100/200, nome=apelido)
 
 
 
-
-#@app.run(debug=True)
+@app.route('/resultados', methods=('GET', 'POST'))
+def resultados():  
+    if request.method == 'POST':
+        title = request.form['resposta']
+        if title == "Fim":            
+            return redirect(url_for('index'))
+        else:
+            return redirect(url_for('index'))    
+    rows = ranking()
+    return render_template('resultados.html', rows = rows)

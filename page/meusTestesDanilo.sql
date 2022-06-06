@@ -4,5 +4,3 @@ CREATE TABLE IF NOT EXISTS ranking (
     apelido VARCHAR(255) NOT NULL,
     pontuacao INTEGER NOT NULL
 );
-
-INSERT INTO ranking ("apelido", "pontuacao") VALUES ("Danilo", 1);

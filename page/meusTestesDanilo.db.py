@@ -7,12 +7,13 @@ with open('meusTestesDanilo.sql') as f:
 
 cur = connection.cursor()
 
-cur.execute("SELECT * FROM ranking;")
+cur.execute("SELECT * FROM ranking ORDER BY pontuacao DESC;")
 
 rows = cur.fetchall()
 
 for row in rows:
-    print(row)
+    print(row[2])
+    print(row[3])
 
 
 connection.commit()

@@ -4,15 +4,15 @@
 <p>Parabéns {{nome}}, você finalizou o jogo.</p>
 <h1>Sua pontuação: {{pontuacao}}</h1>
 <p>Pontuação máxima possível: 200.</p>
-<p>Você acertou {{resultado}}% das perguntar e você ficou em 3° lugar.</p>
+<p>Você acertou {{resultado}}% das perguntas.</p>
 <br>
 <form method="post">
     <div class="hidden">
         <label for="title">Title</label> 
-        <input type="text" name="resposta" placeholder="Post title" class="form-control" value="Fim"></input>
+        <input type="text" name="resposta" placeholder="Post title" class="form-control" value="Ranking"></input>
     </div>
     <div class="form-group">
-        <button type="number" class="btn btn-primary">Finalizar o jogo!</button>
+        <button type="number" class="btn btn-primary">Ver Ranking</button>
     </div>
 </form>
 <p>Pontuação total atual: {{pontuacao}} </p>
