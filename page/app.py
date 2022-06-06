@@ -8,22 +8,37 @@ from werkzeug.exceptions import abort
 
 
 
+def salvando(nome, pontuacao):
+
+    connection = sqlite3.connect('meusTestesDanilo.db')
+
+    with open('meusTestesDanilo.sql') as f:
+        connection.executescript(f.read())
+
+    cur = connection.cursor()
+
+    cur.execute("INSERT INTO ranking ('apelido', 'pontuacao') VALUES ('{}', {});".format(nome, pontuacao))
+
+    connection.commit()
+    connection.close()
+
+
+
+
+
 pontos=0
 apelido=''
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
-database_file = "sqlite:///{}".format(os.path.join(project_dir, "database.db"))
+database_file = "sqlite:///{}".format(os.path.join(project_dir, "meusTestesDanilo.db"))
 
 app = Flask('__name__')
 app.config['SECRET_KEY'] = 'your secret key'
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 db = SQLAlchemy(app)
 
-class Posts(db.Model):
-   id = db.Column(db.Integer, primary_key=True)
-   created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-   title = db.Column(db.String(80), nullable=False)
-   content = db.Column(db.String(200), nullable=False)
+
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -60,21 +75,6 @@ def post(post_id):
     post = get_post(post_id)
     return render_template('post.html', post=post)
 
-@app.route('/create', methods=('GET', 'POST'))
-def create():
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-
-        if not title:
-            flash('O título é obrigatório!')
-        else:
-            post = Posts(title=title, content=content)
-            db.session.add(post)
-            db.session.commit()
-            return redirect(url_for('index'))
-
-    return render_template('create.html')
 
 @app.route('/<int:id>/edit', methods=('GET', 'POST'))
 def edit(id):
@@ -505,6 +505,7 @@ def aula20():
 def aula21():
     global pontos
     global apelido
+    salvando(apelido, pontos)
     if request.method == 'POST':
         title = request.form['resposta']
 
@@ -515,4 +516,7 @@ def aula21():
             return render_template('index.html')
     return render_template('aula21.html', pontuacao=pontos, resultado=pontos*100/200, nome=apelido)
 
-#app.run(debug=True)
+
+
+
+#@app.run(debug=True)

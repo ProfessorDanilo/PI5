@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS ranking (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    apelido VARCHAR(255) NOT NULL,
+    pontuacao INTEGER NOT NULL
+);
+
+INSERT INTO ranking ("apelido", "pontuacao") VALUES ("Danilo", 1);
