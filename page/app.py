@@ -43,7 +43,7 @@ apelido=''
 project_dir = os.path.dirname(os.path.abspath(__file__))
 database_file = "sqlite:///{}".format(os.path.join(project_dir, "meusTestesDanilo.db"))
 
-app = Flask('__name__')
+app = Flask('__name__')  
 app.config['SECRET_KEY'] = 'your secret key'
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 db = SQLAlchemy(app)
@@ -511,3 +511,6 @@ def resultados():
             return redirect(url_for('index'))    
     rows = ranking()
     return render_template('resultados.html', rows = rows)
+
+
+app.run(host='0.0.0.0', debug=True)
