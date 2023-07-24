@@ -8,6 +8,13 @@ from werkzeug.exceptions import abort
 
 
 
+
+import Adafruit_DHT as DHT
+import RPi.GPIO as GPIO
+import time
+
+
+
 def salvando(nome, pontuacao):
     if nome == '':
         return None
@@ -54,7 +61,11 @@ db = SQLAlchemy(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    sensor = DHT.DHT11
+    GPIO.setmode(GPIO.BOARD)
+    pino_sensor = 25
+    umid, temp = DHT.read_retry(sensor, pino_sensor)
+    return render_template('index.html', temp = temp, umid = umid)
 
 @app.route('/index.html')
 def index2():
@@ -513,4 +524,4 @@ def resultados():
     return render_template('resultados.html', rows = rows)
 
 
-app.run(host='0.0.0.0', debug=True)
+app.run(port=5000, host='0.0.0.0', debug=True)
