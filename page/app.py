@@ -15,9 +15,6 @@ mes = now.month
 dia = now.day
 hora = now.hour
 minuto = now.minute
-
-
-
 sensor = DHT.DHT11
 GPIO.setmode(GPIO.BOARD)
 pino_sensor = 25
