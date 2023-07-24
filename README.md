@@ -7,7 +7,7 @@ No terminal, digite:
   ```bash 
   $ mkdir ~/git
 
-  $ git clone https://github.com/univesp-projetointegrador1/website_PI2.git
+  $ git clone https://github.com/ProfessorDanilo/pi5.git
 
   (digite suas credenciais)
 
@@ -17,9 +17,9 @@ No terminal, digite:
 ### Para criar um ambiente virtual:
   ```bash 
   
-  sudo python3 -m venv ~/git/website_PI2/venv
+  sudo python3 -m venv ~/git/pi5/venv
   
-  source ~/git/website_PI2/venv/bin/activate
+  source ~/git/pi5/venv/bin/activate
   ```
 
 ### Para instalar pacotes necessários:
