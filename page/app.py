@@ -5,21 +5,12 @@ import sqlite3
 from time import sleep
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import abort
-
-
-
-<<<<<<< HEAD
-
 import Adafruit_DHT as DHT
 import RPi.GPIO as GPIO
 import time
+#def salvando(nome, pontuacao):
 
-
-
-def salvando(nome, pontuacao):
-=======
 def aulas_resultados(nome, pontuacao):
->>>>>>> 552292a (adição de nova página com novas opções de jogos)
     if nome == '':
         return None
     connection = sqlite3.connect('aulas_resultados.db')
@@ -348,7 +339,7 @@ def aula11():
         elif title == "proximo":
             return redirect(url_for('aula12'))
     return render_template('aula11.html', pontuacao=pontos)
-    
+
 
 
 @app.route('/aula12', methods=('GET', 'POST'))#Cachorros não tem pernas E borboletas voam.
@@ -559,9 +550,4 @@ def resultados():
     return render_template('resultados.html', rows = rows)
 
 
-<<<<<<< HEAD
 app.run(port=5000, host='0.0.0.0', debug=True)
-=======
-
-app.run(host='0.0.0.0', debug=True)
->>>>>>> 552292a (adição de nova página com novas opções de jogos)
