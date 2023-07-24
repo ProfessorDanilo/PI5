@@ -25,7 +25,7 @@ umid, temp = DHT.read_retry(sensor, pino_sensor)
 
 
 # Crie uma conexão com o banco de dados
-conn = sqlite3.connect("dados.sql")
+conn = sqlite3.connect("dados.db")
 
 # Crie um cursor
 c = conn.cursor()
@@ -40,13 +40,13 @@ conn.commit()
 conn.close()
 
 # Crie uma conexão com o banco de dados
-conn = sqlite3.connect("meu_banco_de_dados.sqlite")
+conn = sqlite3.connect("dados.db")
 
 # Crie um cursor
 c = conn.cursor()
 
 # Execute uma consulta SQL
-c.execute("SELECT * FROM tabela")
+c.execute("SELECT * FROM dados")
 
 # Obtenha os resultados da consulta
 rows = c.fetchall()
