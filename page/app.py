@@ -8,6 +8,7 @@ from werkzeug.exceptions import abort
 
 
 
+<<<<<<< HEAD
 
 import Adafruit_DHT as DHT
 import RPi.GPIO as GPIO
@@ -16,11 +17,14 @@ import time
 
 
 def salvando(nome, pontuacao):
+=======
+def aulas_resultados(nome, pontuacao):
+>>>>>>> 552292a (adição de nova página com novas opções de jogos)
     if nome == '':
         return None
-    connection = sqlite3.connect('meusTestesDanilo.db')
+    connection = sqlite3.connect('aulas_resultados.db')
 
-    with open('meusTestesDanilo.sql') as f:
+    with open('aulas_resultados.sql') as f:
         connection.executescript(f.read())
 
     cur = connection.cursor()
@@ -32,8 +36,8 @@ def salvando(nome, pontuacao):
 
 
 def ranking():    
-    connection = sqlite3.connect('meusTestesDanilo.db')
-    with open('meusTestesDanilo.sql') as f:
+    connection = sqlite3.connect('aulas_resultados.db')
+    with open('aulas_resultados.sql') as f:
         connection.executescript(f.read())
     cur = connection.cursor()
     cur.execute("SELECT * FROM ranking ORDER BY pontuacao DESC;")
@@ -48,7 +52,7 @@ pontos=0
 apelido=''
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
-database_file = "sqlite:///{}".format(os.path.join(project_dir, "meusTestesDanilo.db"))
+database_file = "sqlite:///{}".format(os.path.join(project_dir, "aulas_resultados.db"))
 
 app = Flask('__name__')  
 app.config['SECRET_KEY'] = 'your secret key'
@@ -106,10 +110,41 @@ def apresentacao():
     global apelido
     if request.method == 'POST':
         apelido = request.form['nick']
-        return redirect(url_for('aula1'))
+        return redirect(url_for('escolha'))
     return render_template('Apresentacao.html')
 
 
+
+
+##################################
+#apresentação do jogo #
+@app.route('/escolha', methods=('GET', 'POST'))
+def escolha():
+    if request.method == 'POST':
+        title = request.form['resposta']
+
+        if title == "aulas":
+            return redirect(url_for('aula1nivel1'))
+
+        elif title == "algebra":
+            return redirect(url_for('algebra1nivel1'))
+
+        elif title == "portas":
+            return redirect(url_for('porta1nivel1'))
+    return render_template('escolha.html')
+
+
+##################################
+#adicionando rotas para as aulas #
+@app.route('/aula1nivel1', methods=('GET', 'POST'))
+def aula1nivel1():
+    if request.method == 'POST':
+        title = request.form['resposta']
+        
+        if title == "comecando":
+            return redirect(url_for('aula1'))
+
+    return render_template('aula1nivel1.html')
 
 ##################################
 #adicionando rotas para as aulas #
@@ -504,7 +539,7 @@ def aula21():
     if request.method == 'POST':
         title = request.form['resposta']
         if title == "Ranking":
-            salvando(apelido, pontos)
+            aulas_resultados(apelido, pontos)
             return redirect(url_for('resultados'))
         else:
             return redirect(url_for('resultados'))   
@@ -524,4 +559,9 @@ def resultados():
     return render_template('resultados.html', rows = rows)
 
 
+<<<<<<< HEAD
 app.run(port=5000, host='0.0.0.0', debug=True)
+=======
+
+app.run(host='0.0.0.0', debug=True)
+>>>>>>> 552292a (adição de nova página com novas opções de jogos)

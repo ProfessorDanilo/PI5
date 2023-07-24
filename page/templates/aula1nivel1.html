@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Nível 1 {% endblock %}</h1>
+<p>Vamos aprender um pouco sobre lógica proposicional: isso quer dizer que você deverá analisar se uma afirmação é verdadeira ou falsa. Por exemplo, você sabe que pessoas não possuem asas, portanto a afirmação "pessoas possuem asas" é uma afirmação falsa.</p>
+<p>Para cada afirmação (proposição) clique em Verdadeiro ou Falso.</p>
+<br>
+<p>Clique no botão para continuar.</p>
+<br>
+<form method="post">
+    <div class="hidden">
+        <label for="title">Title</label> 
+        <input type="text" name="resposta" placeholder="Post title" class="form-control" value="comecando"> </input>
+    </div>
+    <div class="form-group">
+        <button type="number" class="btn btn-primary">Próxima</button>
+    </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Escolha o jogo {% endblock %}</h1>
+<br>
+<table>
+<tr><td>
+        <form method="post">
+        <div class="hidden">
+            <label for="title">Title</label> 
+            <input type="text" name="resposta" placeholder="Post title" class="form-control" value="aulas">1</input>
+        </div>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">Textual</button>
+        </div>
+        </form>
+    </td>
+    </table>
+    <p>A primeira atividade consiste em apresentar à você como usar as palavras E e OU adequadamente. Estas palavras são chamadas de conectivos lógicos.</p>
+    <table>
+<td>
+    <form method="post">
+        <div class="hidden">
+            <label for="title">Title</label> 
+            <input type="text" name="resposta" placeholder="Post title" class="form-control" value="algebra">0</input>
+        </div>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">Algébrica</button>
+        </div>
+    </form>
+</td>
+</table>
+<p>A segunda atividade consiste usar as operações matemáticas de soma e multiplicação como forma de substituir os conectivos lógicos aprendidos na atividade anterior.</p>
+<table>
+<td>
+    <form method="post">
+        <div class="hidden">
+            <label for="title">Title</label> 
+            <input type="text" name="resposta" placeholder="Post title" class="form-control" value="portas">0</input>
+        </div>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">Portas</button>
+        </div>
+    </form>
+</td>
+</table>
+<p>Por fim, apresentamos o que são portas lógicas, um assunto importante em eletrônica digital.</p>
+<p></p>
+{% endblock %}

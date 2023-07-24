@@ -1,8 +1,8 @@
 import sqlite3
 
-connection = sqlite3.connect('meusTestesDanilo.db')
+connection = sqlite3.connect('aulas_resultados.db')
 
-with open('meusTestesDanilo.sql') as f:
+with open('aulas_resultados.sql') as f:
     connection.executescript(f.read())
 
 cur = connection.cursor()
